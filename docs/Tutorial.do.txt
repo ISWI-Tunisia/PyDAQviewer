@@ -1,0 +1,12 @@
+TITLE: PyDAQviewer Tutorial
+AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm at University of Tunis El Manar, Faculty of Sciences of Tunis, LSAMA Laboratory & ISWI-Tunisia.
+DATE: today
+__Summary.__
+The VLF PyDAQviewer (Data Acquisition data viewer)is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver.
+FIGURE: [imgs/GUI_PyDAQviewer, width=500 frac=1.0]
+TOC: on
+
+!split
+======= SiteInfo =======
+This file is just simple .py files in which you will enter data. For ReceiverInfo you will enter two columns of data (Figure 1), the first column of the file is the name of the site (as defined in the VLF DAQ program
+which acquires the data).
