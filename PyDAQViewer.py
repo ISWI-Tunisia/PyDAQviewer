@@ -101,6 +101,7 @@ class App(QDialog):
         DateEdit.setDisplayFormat("dd-MMMM-yyyy")
         DateEdit.setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         DateEdit.setCalendarPopup(True)
+        DateEdit.calendarWidget().setLocale(QLocale(QLocale.English, QLocale.UnitedStates))
         layout1.addWidget(DateEdit)
         
         today= QDateTime.currentDateTime().date()
