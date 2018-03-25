@@ -48,7 +48,14 @@ pre { color: inherit; background-color: transparent; }
                1,
                'table_of_contents',
                'table_of_contents'),
-              ('SiteInfo', 1, None, '___sec0')]}
+              ('The VLF PyDAQviewer', 1, None, '___sec0'),
+              ('Which Data to Plot', 1, None, '___sec1'),
+              ('Narrowband\tdata\tfile\tnaming\tconvention',
+               2,
+               None,
+               '___sec2'),
+              ('Folder Path Convension', 2, None, '___sec3'),
+              ('SiteInfo', 1, None, '___sec4')]}
 end of tocinfo -->
 
 <body>
@@ -70,8 +77,12 @@ end of tocinfo -->
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;">Table of contents</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;">SiteInfo</a></li>
+     <!-- navigation toc: --> <li><a href="#table_of_contents" style="font-size: 80%;"><b>Table of contents</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>The VLF PyDAQviewer</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Which Data to Plot</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Narrowband	data	file	naming	convention</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Folder Path Convension</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;"><b>SiteInfo</b></a></li>
 
         </ul>
       </li>
@@ -105,9 +116,11 @@ end of tocinfo -->
 <center>[2] <b>ISWI-Tunisia.</b></center>
 <br>
 <p>
-<center><h4>Mar 24, 2018</h4></center> <!-- date -->
+<center><h4>Mar 25, 2018</h4></center> <!-- date -->
 <br>
-<b>Summary.</b> The VLF PyDAQviewer (Data Acquisition data viewer)is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver.
+<b>Summary.</b> The VLF PyDAQviewer (Data Acquisition data viewer)is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver. Tis Program is inspired from the matlab PyDAQviewer program developped by Benjamin Cotts at Stanford University and distribuded for the use of AWESOME-VLF comunity at the ISWI network.
+
+<p>
 <br /><br /><center><p><img src="imgs/GUI_PyDAQviewer.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
@@ -117,12 +130,83 @@ end of tocinfo -->
 Table of contents</h2>
 
 <p>
-<a href="#___sec0"> SiteInfo </a><br>
+<a href="#___sec0"> The VLF PyDAQviewer </a><br>
+<a href="#___sec1"> Which Data to Plot </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec2"> Narrowband	data	file	naming	convention </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> Folder Path Convension </a><br>
+<a href="#___sec4"> SiteInfo </a><br>
 </p>
 <p>
 <!-- !split -->
 
-<h1 id="___sec0" class="anchor">SiteInfo </h1>
+<h1 id="___sec0" class="anchor">The VLF PyDAQviewer </h1>
+The program is broken up into three main sections:
+
+<ol>
+<li> Entering which data you wish to plot</li>
+<li> Find/plot data</li>
+<li> Viewing/interaction with data</li>
+</ol>
+
+<!-- !split -->
+
+<h1 id="___sec1" class="anchor">Which Data to Plot </h1>
+Narrowband	data	are	the	amplitude and	phase	of	specific	transmitter	frequencies	received	at	a	given	location.	This	dataset	is modest,	on	the	order	of	100	MB	per	day	per	site,	and	can	be	fairly	easily	transmitted	from remote	field	sites	over	the	internet.	This	data	can	be	archived	continuously.
+
+<p>
+The	data	are	saved	in	a	Matlab	v4	format,	which	can	be	easily	read	in	Matlab.	The	format consists	of	a	header	with	basic	information,	followed	by	the	data	itself.	Matlab	v4	is	an	easy format.	The	specific	format	is	detailed	below,	so	that	it	is	machine-readable	in	any	digital application.
+
+<h2 id="___sec2" class="anchor">Narrowband	data	file	naming	convention </h2>
+Narrowband filename convension is like discribed in the <a href="http://newserver.stil.bas.bg/ISWI/PDFsJ/ISWI_DataPolicy_1.3.1_final.pdf" target="_blank">International	Space	Weather	Initiative	(ISWI)	Data	Policy (version 1.3.1)</a> for AWESOME receiver.
+
+<p>
+XXYYMMDDHHMMSSZZZ_ACCT.mat
+
+<ul>
+<li> XX  - Station	ID</li>
+<li> YY	- Year</li>
+<li> MM	- Month</li>
+<li> DD	- Day</li>
+<li> HH	- Hour</li>
+<li> MM	- Minute</li>
+<li> SS	- Second</li>
+<li> ZZZ	- Transmitter	Callsign</li>
+<li> A	- Not	relevant</li>
+<li> CC	- 00	for	N/S	channel,	01	for	E/W	channel</li>
+<li> T	- Type	of	data</li>
+
+<ul>
+  <li> A	is	low	resolution	(1	Hz	sampling	rate)	amplitude</li>
+  <li> B	is	low	resolution	(1	Hz	sampling	rate)	phase</li>
+  <li> C	is	high	resolution	(50	Hz	sampling	rate)	amplitude</li>
+  <li> D	is	high	resolution	(50	Hz	sampling	rate)	phase</li>
+  <li> F	is	high	resolution	(50	Hz	sampling	rate)	effective	group	delay</li>
+</ul>
+
+</ul>
+
+<!-- !split -->
+
+<h2 id="___sec3" class="anchor">Folder Path Convension </h2>
+Before running the PyDAQviewer, make sure the main folder that is used to store your Narrowband data is <code>'NarrowbandData/'</code>.
+
+<p>
+The path to a given data is something like: <code>'C:/NarrowbandData/SiteName/Year/MM/DD/'</code> (e.g. <code>'C:/NarrowbandData/Tunisia/2018/03/25/'</code>). Note that this can be on any drive root drive: C-Z including DVD drives etc, so if you burn data to a DVD burn it in the same folder and the PyDAQviewer will be able to find it.
+
+<p>
+Select date:
+
+<p>
+<center> <!-- figure label: --> <div id="fig:SelectDate"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Select date of the recorded data from the calendar.  <!-- caption label: fig:SelectDate --> </p></center>
+<p><img src="imgs/SelectDate_PyDAQviewer.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<!-- !split -->
+
+<h1 id="___sec4" class="anchor">SiteInfo </h1>
 This file is just simple .py files in which you will enter data. For ReceiverInfo you will enter two columns of data (Figure 1), the first column of the file is the name of the site (as defined in the VLF DAQ program
 which acquires the data).
 
