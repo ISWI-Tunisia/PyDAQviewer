@@ -11,8 +11,13 @@ Rx_ID = {
             "Algeria":"AL",
             "France":"FR",
             "Japan":"JP",
-            "New York":"NY",
-            "Boston":"BO"
+            "NewYork":"NY",
+            "Boulder":"BO",
+            "Cheyenne":"CH",
+            "Walsenburg":"WS",
+            "LasVegas":"LV",
+            
+            
             }
 
 # TODO: Create dictionary for Tx Sites

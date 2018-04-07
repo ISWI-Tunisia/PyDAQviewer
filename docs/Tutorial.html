@@ -55,7 +55,8 @@ pre { color: inherit; background-color: transparent; }
                None,
                '___sec2'),
               ('Folder Path Convension', 2, None, '___sec3'),
-              ('SiteInfo', 1, None, '___sec4')]}
+              ('SiteInfo', 1, None, '___sec4'),
+              ('Reproducing the LEP Tutorial', 1, None, '___sec5')]}
 end of tocinfo -->
 
 <body>
@@ -83,6 +84,7 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Narrowband	data	file	naming	convention</a></li>
      <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Folder Path Convension</a></li>
      <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;"><b>SiteInfo</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;"><b>Reproducing the LEP Tutorial</b></a></li>
 
         </ul>
       </li>
@@ -116,7 +118,7 @@ end of tocinfo -->
 <center>[2] <b>ISWI-Tunisia.</b></center>
 <br>
 <p>
-<center><h4>Mar 25, 2018</h4></center> <!-- date -->
+<center><h4>Apr 7, 2018</h4></center> <!-- date -->
 <br>
 <b>Summary.</b> The VLF PyDAQviewer (Data Acquisition data viewer)is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver. Tis Program is inspired from the matlab PyDAQviewer program developped by Benjamin Cotts at Stanford University and distribuded for the use of AWESOME-VLF comunity at the ISWI network.
 
@@ -135,6 +137,7 @@ Table of contents</h2>
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Narrowband	data	file	naming	convention </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec3"> Folder Path Convension </a><br>
 <a href="#___sec4"> SiteInfo </a><br>
+<a href="#___sec5"> Reproducing the LEP Tutorial </a><br>
 </p>
 <p>
 <!-- !split -->
@@ -191,7 +194,14 @@ XXYYMMDDHHMMSSZZZ_ACCT.mat
 Before running the PyDAQviewer, make sure the main folder that is used to store your Narrowband data is <code>'NarrowbandData/'</code>.
 
 <p>
-The path to a given data is something like: <code>'C:/NarrowbandData/SiteName/Year/MM/DD/'</code> (e.g. <code>'C:/NarrowbandData/Tunisia/2018/03/25/'</code>). Note that this can be on any drive root drive: C-Z including DVD drives etc, so if you burn data to a DVD burn it in the same folder and the PyDAQviewer will be able to find it.
+<center> <!-- figure label: --> <div id="fig:SelectFolder"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  Select NarrowbandData folder.  <!-- caption label: fig:SelectFolder --> </p></center>
+<p><img src="imgs/opendir.png" align="bottom" width=500></p>
+</center>
+
+<p>
+The path to your data will be something like: <code>'C:/NarrowbandData/SiteName/Year/MM/DD/'</code> (e.g. <code>'C:/NarrowbandData/Tunisia/2018/03/25/'</code>). Note that this can be on any drive root drive: C-Z including DVD drives etc, so if you burn data to a DVD burn it in the same folder and the PyDAQviewer will be able to find it.
 
 <p>
 Select date:
@@ -199,7 +209,7 @@ Select date:
 <p>
 <center> <!-- figure label: --> <div id="fig:SelectDate"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Select date of the recorded data from the calendar.  <!-- caption label: fig:SelectDate --> </p></center>
+<center><p class="caption">Figure 2:  Select date of the recorded data from the calendar.  <!-- caption label: fig:SelectDate --> </p></center>
 <p><img src="imgs/SelectDate_PyDAQviewer.png" align="bottom" width=500></p>
 </center>
 
@@ -209,6 +219,82 @@ Select date:
 <h1 id="___sec4" class="anchor">SiteInfo </h1>
 This file is just simple .py files in which you will enter data. For ReceiverInfo you will enter two columns of data (Figure 1), the first column of the file is the name of the site (as defined in the VLF DAQ program
 which acquires the data).
+
+<p>
+
+<!-- code=python (!bc python) typeset with pygments style "monokai" -->
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># -*- coding: utf-8 -*-</span>
+<span style="color: #e6db74">&#39;&#39;&#39;</span>
+<span style="color: #e6db74">Author: Ahmed Ammar, ahmed.ammar@fst.utm.tn</span>
+<span style="color: #e6db74">Purpose: Save VLF Receivers (Rx) and Transmitters (Tx) Info</span>
+<span style="color: #e6db74">Date Created: Mon Mar 12 22:23:34 2018</span>
+<span style="color: #e6db74">   </span>
+<span style="color: #e6db74">&#39;&#39;&#39;</span>
+<span style="color: #75715e"># TODO: Add All Rx Sites</span>
+<span style="color: #f8f8f2">Rx_ID</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
+            <span style="color: #e6db74">&quot;Tunisia&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;TN&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;Algeria&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;AL&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;France&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;FR&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;Japan&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;JP&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NY&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;Boston&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;BO&quot;</span>
+            <span style="color: #f8f8f2">}</span>
+
+<span style="color: #75715e"># TODO: Create dictionary for Tx Sites</span>
+<span style="color: #f8f8f2">Tx_ID</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
+            <span style="color: #e6db74">&quot;NAA-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NAA_000&quot;</span><span style="color: #f8f8f2">,</span> 
+            <span style="color: #e6db74">&quot;NAA-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NAA_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NRK-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NRK_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NRK-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NRK_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NLK-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NLK_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NLK-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NLK_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NAU-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NAU_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NAU-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NAU_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NPM-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NPM_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NPM-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NPM_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;ICV-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;ICV_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;ICV-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;ICV_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NSC-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NSC_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;NSC-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NSC_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;GQD-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;GQD_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;GQD-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;GQD_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;GBZ-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;GBZ_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;GBZ-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;GBZ_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;DHO-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;DHO_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;DHO-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;DHO_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;HWU-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;HWU_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;HWU-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;HWU_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;JXN-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;JXN_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;JXN-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;JXN_001&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;ISR-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;ISR_000&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;ISR-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;ISR_001&quot;</span>
+            <span style="color: #f8f8f2">}</span>
+</pre></div>
+
+<h1 id="___sec5" class="anchor">Reproducing the LEP Tutorial </h1>
+Now that you have a basic understanding of how the DAQviewer works, it's time to put it to the test and try out all the features. To do this we'll be reproducing a few of the plots you made by hand in the LEP tutorial.
+
+<p>
+To start edit the <code>SiteInfo.py</code> file to include the sites: Cheyenne, Boulder, Walsenburg, and Las Vegas (note in the <code>SiteInfo.py</code> file Las Vegas should be all one word: LasVegas).
+
+<p>
+<center> <!-- figure label: --> <div id="fig:LEP_Tuto"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 3:  Example working on data from LEP tutorial.  <!-- caption label: fig:LEP_Tuto --> </p></center>
+<p><img src="imgs/lep_tuto.png" align="bottom" width=500></p>
+</center>
+
+<p>
+The output of this configuration is in below:
+
+<p>
+<center> <!-- figure label: --> <div id="fig:LEP_figure"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  Generated figure.  <!-- caption label: fig:LEP_figure --> </p></center>
+<p><img src="imgs/LEPfigure.png" align="bottom" width=500></p>
+</center>
+
+<p>
 
 <!-- ------------------- end of main content --------------- -->
 

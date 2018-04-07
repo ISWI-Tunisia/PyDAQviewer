@@ -41,7 +41,7 @@ def Plot_Data(pathnames=[], filenames=[], TitlePlot=[]):
             for jj in range(0, (len(Data_amp)-AveragingLengthAmp+1)):
                 data_amp_averaged[jj] = np.mean(Data_amp[jj:(jj+AveragingLengthAmp-1)])
             ## Figure
-            fig.add_subplot(max_nsp, 1, nsp)
+            ax1= fig.add_subplot(max_nsp, 1, nsp)
             plt.plot(time[:len(data_amp_averaged)], 20*np.log10(data_amp_averaged), lw=1, color='r')
             plt.plot(time, 20*np.log10(Data_amp), ls='-', lw=.5, color='b', alpha=.5)
             plt.title(title, fontsize=10, weight = 'bold')
@@ -78,7 +78,7 @@ def Plot_Data(pathnames=[], filenames=[], TitlePlot=[]):
                 data_phase_averaged[jj] = np.mean(data_phase_unwrapped[jj:(jj+AveragingLengthPhase-1)])
             
             ## Figure
-            fig.add_subplot(max_nsp, 1, nsp)
+            ax2= fig.add_subplot(max_nsp, 1, nsp, sharex=ax1)
             plt.plot(time[:len(data_phase_averaged)], data_phase_averaged, lw=1, color='r')
             plt.plot(time, data_phase_unwrapped, lw=.5, color='b', alpha=.5)
             plt.title(title, fontsize=10, weight = 'bold')
@@ -89,4 +89,7 @@ def Plot_Data(pathnames=[], filenames=[], TitlePlot=[]):
     plt.tight_layout()       
     plt.show()
 if __name__ == "__main__":
-    Plot_Data(pathnames=["F:\\NarrowbandData\\Tunisia\\2017\\09\\05\\","F:\\NarrowbandData\\Tunisia\\2017\\09\\06\\" ], filenames=["*170905*NRK_001A.mat","*170906*NRK_001B.mat"], TitlePlot=["1","2"])
+    Plot_Data(pathnames=["H:\\NarrowbandData\\Tunisia\\2017\\09\\06\\",
+                         "H:\\NarrowbandData\\Tunisia\\2017\\09\\06\\" ],
+              filenames=["*170906*NRK_001A.mat","*170906*NRK_001B.mat"],
+                        TitlePlot=["1","2"])
