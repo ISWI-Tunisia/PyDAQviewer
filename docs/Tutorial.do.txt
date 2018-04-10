@@ -46,7 +46,9 @@ XXYYMMDDHHMMSSZZZ_ACCT.mat
 ===== Folder Path Convension =====
 Before running the PyDAQviewer, make sure the main folder that is used to store your Narrowband data is `'NarrowbandData/'`.
 
-The path to a given data is something like: `'C:/NarrowbandData/SiteName/Year/MM/DD/'` (e.g. `'C:/NarrowbandData/Tunisia/2018/03/25/'`). Note that this can be on any drive root drive: C-Z including DVD drives etc, so if you burn data to a DVD burn it in the same folder and the PyDAQviewer will be able to find it.
+FIGURE: [imgs/opendir, width=500 frac=1.0] Select NarrowbandData folder. label{fig:SelectFolder}
+
+The path to your data will be something like: `'C:/NarrowbandData/SiteName/Year/MM/DD/'` (e.g. `'C:/NarrowbandData/Tunisia/2018/03/25/'`). Note that this can be on any drive root drive: C-Z including DVD drives etc, so if you burn data to a DVD burn it in the same folder and the PyDAQviewer will be able to find it.
 
 Select date:
 
@@ -56,3 +58,64 @@ FIGURE: [imgs/SelectDate_PyDAQviewer, width=500 frac=1.0] Select date of the rec
 ======= SiteInfo =======
 This file is just simple .py files in which you will enter data. For ReceiverInfo you will enter two columns of data (Figure 1), the first column of the file is the name of the site (as defined in the VLF DAQ program
 which acquires the data).
+
+!bc python
+# -*- coding: utf-8 -*-
+'''
+Author: Ahmed Ammar, ahmed.ammar@fst.utm.tn
+Purpose: Save VLF Receivers (Rx) and Transmitters (Tx) Info
+Date Created: Mon Mar 12 22:23:34 2018
+   
+'''
+# TODO: Add All Rx Sites
+Rx_ID = {
+            "Tunisia":"TN",
+            "Algeria":"AL",
+            "France":"FR",
+            "Japan":"JP",
+            "New York":"NY",
+            "Boston":"BO"
+            }
+
+# TODO: Create dictionary for Tx Sites
+Tx_ID = {
+            "NAA-NS":"NAA_000", 
+            "NAA-EW":"NAA_001",
+            "NRK-NS":"NRK_000",
+            "NRK-EW":"NRK_001",
+            "NLK-NS":"NLK_000",
+            "NLK-EW":"NLK_001",
+            "NAU-NS":"NAU_000",
+            "NAU-EW":"NAU_001",
+            "NPM-NS":"NPM_000",
+            "NPM-EW":"NPM_001",
+            "ICV-NS":"ICV_000",
+            "ICV-EW":"ICV_001",
+            "NSC-NS":"NSC_000",
+            "NSC-EW":"NSC_001",
+            "GQD-NS":"GQD_000",
+            "GQD-EW":"GQD_001",
+            "GBZ-NS":"GBZ_000",
+            "GBZ-EW":"GBZ_001",
+            "DHO-NS":"DHO_000",
+            "DHO-EW":"DHO_001",
+            "HWU-NS":"HWU_000",
+            "HWU-EW":"HWU_001",
+            "JXN-NS":"JXN_000",
+            "JXN-EW":"JXN_001",
+            "ISR-NS":"ISR_000",
+            "ISR-EW":"ISR_001"
+            }
+!ec
+
+======= Reproducing the LEP Tutorial =======
+Now that you have a basic understanding of how the DAQviewer works, it's time to put it to the test and try out all the features. To do this we'll be reproducing a few of the plots you made by hand in the LEP tutorial.
+
+To start edit the `SiteInfo.py` file to include the sites: Cheyenne, Boulder, Walsenburg, and Las Vegas (note in the `SiteInfo.py` file Las Vegas should be all one word: LasVegas).
+
+FIGURE: [imgs/lep_tuto, width=500 frac=1.0] Example working on data from LEP tutorial. label{fig:LEP_Tuto}
+
+The output of this configuration is in below:
+
+FIGURE: [imgs/LEPfigure, width=500 frac=1.0] Generated figure. label{fig:LEP_figure}
+
