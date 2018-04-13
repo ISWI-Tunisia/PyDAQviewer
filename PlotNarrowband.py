@@ -25,15 +25,15 @@ class PlotNarrowband(QMainWindow, Ui_MainWindow):
 
         QMainWindow.__init__(self, parent)
         self.setupUi(self)
-        self.pathnames=["H:\\NarrowbandData\\Tunisia\\2017\\09\\06\\",
-                         "H:\\NarrowbandData\\Tunisia\\2017\\09\\06\\" ]
-        self.filenames=["*170906*NRK_001A.mat","*170906*NRK_001B.mat"]
-        self.TitlePlot=["1","2"]
+#        self.pathnames=["H:\\NarrowbandData\\Tunisia\\2017\\09\\06\\",
+#                         "H:\\NarrowbandData\\Tunisia\\2017\\09\\06\\" ]
+#        self.filenames=["*170906*NRK_001A.mat","*170906*NRK_001B.mat"]
+#        self.TitlePlot=["1","2"]
             
+        self.time_interval()
+#        self.Plot_Data(pathnames=self.pathnames,filenames=self.filenames, TitlePlot=self.TitlePlot)
         
-        self.Plot_Data(pathnames=self.pathnames,filenames=self.filenames, TitlePlot=self.TitlePlot)
-        
-    def Plot_Data(self, pathnames=[], filenames=[], TitlePlot=[]): 
+    def Plot_Data(self, pathnames, filenames, TitlePlot): 
         """
         Plot Amplitude and Phase from AWESOME DATA
         """
@@ -75,7 +75,7 @@ class PlotNarrowband(QMainWindow, Ui_MainWindow):
                 ax1.set_title(title, fontsize=10, weight = 'bold')
                 ax1.set_xlabel("Time (UT)", fontsize=8, weight = 'bold')
                 ax1.set_ylabel("Amplitude (dB)", fontsize=8, weight = 'bold')
-                ax1.set_xlim(0,24)
+                ax1.set_xlim(self.start, self.end)
         
             else:
                 Data_phi= Data
@@ -123,7 +123,7 @@ class PlotNarrowband(QMainWindow, Ui_MainWindow):
                 ax2.set_title(title, fontsize=10, weight = 'bold')
                 ax2.set_xlabel("Time (UT)", fontsize=8, weight = 'bold')
                 ax2.set_ylabel("Phase (deg)", fontsize=8, weight = 'bold')
-                ax2.set_xlim(0,24)
+                ax2.set_xlim(self.start,self.end)
                 
 #        plt.fig.tight_layout()     
         plt.draw()
@@ -132,19 +132,39 @@ class PlotNarrowband(QMainWindow, Ui_MainWindow):
     @pyqtSlot()
     def on_view_raw_clicked(self):
         
-        self.Plot_Data(pathnames=self.pathnames,filenames=self.filenames, TitlePlot=self.TitlePlot)
+        self.Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
         
     @pyqtSlot()
     def on_view_average_clicked(self):
-        self.Plot_Data(pathnames=self.pathnames,filenames=self.filenames, TitlePlot=self.TitlePlot)
-
+        self.Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
+        
+    @pyqtSlot()
+    def on_replot_clicked(self):
+        self.Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
+        
+    def time_interval(self):
+        ts = self.startTime.time().toString()
+        (h, m, s) = ts.split(':')
+        self.start = int(h) + int(m) / 60 + int(s)/3600
+        
+        te = self.endTime.time().toString()
+        (h, m, s) = te.split(':')
+        self.end = int(h) + int(m) / 60 + int(s)/3600
+                      
     @pyqtSlot(QTime)
-    def on_timeEdit_timeChanged(self, QTime):
+    def on_startTime_timeChanged(self, QTime):
         '''
-         TODO: Set xlim depending in time in time Edit
-         Ref: https://stackoverflow.com/questions/3098248/time-to-decimal-time-in-python
+        Start time
         '''
-        print(self.timeEdit.time().toString()) 
+        self.time_interval()
+        
+    @pyqtSlot(QTime)
+    def on_endTime_timeChanged(self, QTime):
+        '''
+         End Time
+        '''
+        self.time_interval()
+        
 if __name__ == "__main__":
 
     app = QApplication(sys.argv)

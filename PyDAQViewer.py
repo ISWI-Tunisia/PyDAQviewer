@@ -23,6 +23,7 @@ from PyQt5.QtCore import pyqtSlot, QLocale, QDate, QDateTime
 
 from LoadData import DataLoaded_list, DataError_List
 from PlotData import Plot_Data
+from PlotNarrowband import PlotNarrowband
 from SitesInfo import Rx_ID, Tx_ID
 
 class App(QDialog):
@@ -36,6 +37,7 @@ class App(QDialog):
         self.height = 400
         self.initUI()
         self.update_PathFileNames()
+        self.plotDATA = PlotNarrowband(self)
         
     def initUI(self):
         self.setWindowTitle(self.title)
@@ -459,16 +461,22 @@ class App(QDialog):
         file = str(QFileDialog.getExistingDirectory(self, "Select Narrowband Data Folder (NarrowbandData)"))
         self.PathText.setText(file+"/")
     def on_plot(self):
+#        try:
+#            print(self.pathnames[0])
+#            Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
+#            self.TextInfo.clear()
+#            self.TextInfo.textCursor().insertHtml("<p><h3><font color='blue'>Loaded Data: </font></p>")
+#            for data in DataLoaded_list: self.TextInfo.textCursor().insertHtml("<pre><h4><font color='green'>"+data + ", </font></pre>")
+#        except:
+#            self.TextInfo.clear()
+#            for data in DataError_List: self.TextInfo.textCursor().insertHtml("<pre><h4><font color='red'>Error!" + "\n" +  data + ", </font></pre>")
         try:
-            print(self.pathnames[0])
-            Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
-            self.TextInfo.clear()
-            self.TextInfo.textCursor().insertHtml("<p><h3><font color='blue'>Loaded Data: </font></p>")
-            for data in DataLoaded_list: self.TextInfo.textCursor().insertHtml("<pre><h4><font color='green'>"+data + ", </font></pre>")
+            self.plotDATA.Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
+            self.plotDATA.show()
+            self.plotDATA.activateWindow()
+            
         except:
-            self.TextInfo.clear()
-            for data in DataError_List: self.TextInfo.textCursor().insertHtml("<pre><h4><font color='red'>Error!" + "\n" +  data + ", </font></pre>")
-    
+            pass
     def on_ShowDate(self, date):
         '''
         Select Year, Month and Day from calander

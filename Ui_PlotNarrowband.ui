@@ -32,7 +32,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QTimeEdit" name="timeEdit">
+       <widget class="QTimeEdit" name="startTime">
         <property name="displayFormat">
          <string>HH:mm:ss</string>
         </property>
@@ -46,9 +46,23 @@
        </widget>
       </item>
       <item>
-       <widget class="QTimeEdit" name="timeEdit_2">
+       <widget class="QTimeEdit" name="endTime">
         <property name="displayFormat">
          <string>HH:mm:ss</string>
+        </property>
+        <property name="time">
+         <time>
+          <hour>23</hour>
+          <minute>59</minute>
+          <second>59</second>
+         </time>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="replot">
+        <property name="text">
+         <string>Replot</string>
         </property>
        </widget>
       </item>
