@@ -25,6 +25,7 @@ from LoadData import DataLoaded_list, DataError_List
 from PlotData import Plot_Data
 from PlotNarrowband import PlotNarrowband
 from SitesInfo import Rx_ID, Tx_ID
+import simplejson as json
 
 class App(QDialog):
  
@@ -453,9 +454,18 @@ class App(QDialog):
             self.Rx6.setEnabled(False); self.Tx6.setEnabled(False)
             self.Low_High6.setEnabled(False); self.Amplitude_Phase6.setEnabled(False)
         
-        print(self.pathnames)
-        print(self.filenames)
-        print(self.TitlePlot)
+        with open('data_info.json', 'w') as outfile:
+            json.dump({
+                "pathnames": self.pathnames,
+                "filenames":self.filenames,
+                "TitlePlot":self.TitlePlot
+                }, outfile)
+        with open("data_info.json", 'r') as f:
+            datastore=json.load(f)
+
+        print(datastore["pathnames"])
+        print(datastore["filenames"])
+
 
     def on_SelectDir(self):
         file = str(QFileDialog.getExistingDirectory(self, "Select Narrowband Data Folder (NarrowbandData)"))

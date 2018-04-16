@@ -19,20 +19,27 @@ from Ui_PlotNarrowband import Ui_MainWindow
 from LoadData import Load_DAQ_Data
 from DAQ_DataPhase import FixDAQ_DataPhase
 import numpy as np
+import simplejson as json
 
 class PlotNarrowband(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
 
         QMainWindow.__init__(self, parent)
         self.setupUi(self)
-#        self.pathnames=["H:\\NarrowbandData\\Tunisia\\2017\\09\\06\\",
-#                         "H:\\NarrowbandData\\Tunisia\\2017\\09\\06\\" ]
-#        self.filenames=["*170906*NRK_001A.mat","*170906*NRK_001B.mat"]
-#        self.TitlePlot=["1","2"]
-            
+        with open("data_info.json", 'r') as f:
+            datastore=json.load(f)
+
+        self.pathnames= datastore["pathnames"]
+        self.filenames= datastore["filenames"]
+        self.TitlePlot= datastore["TitlePlot"]
+        print(datastore["pathnames"])
+        print(datastore["filenames"])
+#
         self.time_interval()
-#        self.Plot_Data(pathnames=self.pathnames,filenames=self.filenames, TitlePlot=self.TitlePlot)
-        
+        try:
+            self.Plot_Data(pathnames=self.pathnames,filenames=self.filenames, TitlePlot=self.TitlePlot)
+        except:
+            pass
     def Plot_Data(self, pathnames, filenames, TitlePlot): 
         """
         Plot Amplitude and Phase from AWESOME DATA
