@@ -20,12 +20,10 @@ from PyQt5.QtWidgets import (QApplication, QWidget, QPushButton, QHBoxLayout,
                             QLineEdit, QTextEdit, QGridLayout, QComboBox, QCheckBox)
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot, QLocale, QDate, QDateTime
-
-from LoadData import DataLoaded_list, DataError_List
 from PlotData import Plot_Data
 from PlotNarrowband import PlotNarrowband
 from SitesInfo import Rx_ID, Tx_ID
-import simplejson as json
+import json
 
 class App(QDialog):
  
@@ -37,8 +35,9 @@ class App(QDialog):
         self.width = 600
         self.height = 400
         self.initUI()
+        
         self.update_PathFileNames()
-        self.plotDATA = PlotNarrowband(self)
+       
         
     def initUI(self):
         self.setWindowTitle(self.title)
@@ -64,15 +63,17 @@ class App(QDialog):
         windowLayout.addWidget(self.tb)
         windowLayout.addWidget(self.horizontalQWidget)
         windowLayout.addWidget(self.horizontalGroupBox)
-        # Text :Show what is going on when clicking on button plot
-        self.TextInfo= QTextEdit("Ready!", self)
-        self.TextInfo.setReadOnly(True)
-        windowLayout.addWidget(self.TextInfo)
+#        # Text :Show what is going on when clicking on button plot
+#        self.TextInfo= QTextEdit("Ready!", self)
+#        self.TextInfo.setReadOnly(True)
+#        windowLayout.addWidget(self.TextInfo)
         # Plot Button
         buttonPlot = QPushButton('Plot', self)
         buttonPlot.clicked.connect(self.on_plot)
         windowLayout.addWidget(buttonPlot)
-        
+        # Status Label
+        self.status_label= QLabel('', self)
+        windowLayout.addWidget(self.status_label)
         self.setLayout(windowLayout)
         
         self.show()
@@ -465,28 +466,22 @@ class App(QDialog):
 
         print(datastore["pathnames"])
         print(datastore["filenames"])
+        self.status_label.setText("You are looking for: "+str(datastore["filenames"]))
 
 
     def on_SelectDir(self):
         file = str(QFileDialog.getExistingDirectory(self, "Select Narrowband Data Folder (NarrowbandData)"))
         self.PathText.setText(file+"/")
     def on_plot(self):
-#        try:
-#            print(self.pathnames[0])
-#            Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
-#            self.TextInfo.clear()
-#            self.TextInfo.textCursor().insertHtml("<p><h3><font color='blue'>Loaded Data: </font></p>")
-#            for data in DataLoaded_list: self.TextInfo.textCursor().insertHtml("<pre><h4><font color='green'>"+data + ", </font></pre>")
-#        except:
-#            self.TextInfo.clear()
-#            for data in DataError_List: self.TextInfo.textCursor().insertHtml("<pre><h4><font color='red'>Error!" + "\n" +  data + ", </font></pre>")
+
         try:
-            self.plotDATA.Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
+            
+            self.plotDATA = PlotNarrowband(self)
             self.plotDATA.show()
             self.plotDATA.activateWindow()
-            
+            self.status_label.setText("Done!")
         except:
-            pass
+            self.status_label.setText("please verify your settings")
     def on_ShowDate(self, date):
         '''
         Select Year, Month and Day from calander

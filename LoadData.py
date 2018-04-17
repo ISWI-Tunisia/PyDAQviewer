@@ -13,7 +13,6 @@ Versions:
 import scipy.io as mat
 import numpy as np
 import glob
-
 import matplotlib.pyplot as plt
 global DataLoaded
 DataLoaded_list=[]
@@ -33,8 +32,9 @@ def Load_DAQ_Data(path="",fname=""):
         
         file=filename.split("\\")
         # Add loaded filenames into DataLoaded_list
-        DataLoaded_list.append(file[-1])
-        print("Data Loaded:", file[-1])
+        DATA_NAME=file[-1]
+        DataLoaded_list.append(DATA_NAME)
+        print("Data Loaded:", DATA_NAME)
         
         data = LoadData['data']
         data_type= LoadData['is_amp']

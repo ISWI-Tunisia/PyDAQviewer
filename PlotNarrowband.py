@@ -13,40 +13,36 @@ Versions:
 '''
 from PyQt5.QtCore import pyqtSlot, QTime
 from PyQt5.QtWidgets import QApplication, QMainWindow
-
 import sys
 from Ui_PlotNarrowband import Ui_MainWindow
 from LoadData import Load_DAQ_Data
 from DAQ_DataPhase import FixDAQ_DataPhase
 import numpy as np
-import simplejson as json
+import json
 
 class PlotNarrowband(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
 
         QMainWindow.__init__(self, parent)
         self.setupUi(self)
-        with open("data_info.json", 'r') as f:
-            datastore=json.load(f)
-
-        self.pathnames= datastore["pathnames"]
-        self.filenames= datastore["filenames"]
-        self.TitlePlot= datastore["TitlePlot"]
-        print(datastore["pathnames"])
-        print(datastore["filenames"])
-#
         self.time_interval()
-        try:
-            self.Plot_Data(pathnames=self.pathnames,filenames=self.filenames, TitlePlot=self.TitlePlot)
-        except:
-            pass
-    def Plot_Data(self, pathnames, filenames, TitlePlot): 
+        self.Plot_Data()
+
+    def Plot_Data(self): 
         """
         Plot Amplitude and Phase from AWESOME DATA
         """
+        with open("data_info.json", 'r') as f:
+            datastore=json.load(f)
+
+        pathnames= datastore["pathnames"]
+        filenames= datastore["filenames"]
+        TitlePlot= datastore["TitlePlot"]
+        
         max_nsp=len(pathnames)
         
         nsp=0 # number of subplots
+        
         plt=self.mplwidget.canvas
         plt.ax.clear()
         plt.ax.axis('off')
@@ -132,22 +128,21 @@ class PlotNarrowband(QMainWindow, Ui_MainWindow):
                 ax2.set_ylabel("Phase (deg)", fontsize=8, weight = 'bold')
                 ax2.set_xlim(self.start,self.end)
                 
-#        plt.fig.tight_layout()     
+        plt.fig.tight_layout()     
         plt.draw()
 
        
     @pyqtSlot()
     def on_view_raw_clicked(self):
         
-        self.Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
+        self.Plot_Data()
         
     @pyqtSlot()
     def on_view_average_clicked(self):
-        self.Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
-        
+        self.Plot_Data()        
     @pyqtSlot()
     def on_replot_clicked(self):
-        self.Plot_Data(pathnames=self.pathnames, filenames=self.filenames, TitlePlot=self.TitlePlot)
+        self.Plot_Data()
         
     def time_interval(self):
         ts = self.startTime.time().toString()
