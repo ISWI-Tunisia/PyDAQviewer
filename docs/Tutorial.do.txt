@@ -4,7 +4,6 @@ DATE: today
 __Summary.__
 The VLF PyDAQviewer (Data Acquisition data viewer)is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver. Tis Program is inspired from the matlab PyDAQviewer program developped by Benjamin Cotts at Stanford University and distribuded for the use of AWESOME-VLF comunity at the ISWI network.
 
-FIGURE: [imgs/GUI_PyDAQviewer, width=500 frac=1.0]
 TOC: on
 
 !split
@@ -43,41 +42,48 @@ XXYYMMDDHHMMSSZZZ_ACCT.mat
   * D	is	high	resolution	(50	Hz	sampling	rate)	phase
   * F	is	high	resolution	(50	Hz	sampling	rate)	effective	group	delay
 !split
-===== Folder Path Convension =====
-Before running the PyDAQviewer, make sure the main folder that is used to store your Narrowband data is `'NarrowbandData/'`.
+===== Folder Path Convension: working directory =====
+FAfter running the PyDAQviewer.py script, the working directory that is used to store your Narrowband data is set by default `'C:/NarrowbandData/'`. See the user interface in Figure ref{fig:GUI}.
+
+FIGURE: [imgs/GUI_PyDAQviewer, width=500 frac=1.0] PyDAQviewer GUI when you run the PyDAQviewer.py script. label{fig:GUI}
+
+
 
 FIGURE: [imgs/opendir, width=500 frac=1.0] Select NarrowbandData folder. label{fig:SelectFolder}
 
 The path to your data will be something like: `'C:/NarrowbandData/SiteName/Year/MM/DD/'` (e.g. `'C:/NarrowbandData/Tunisia/2018/03/25/'`). Note that this can be on any drive root drive: C-Z including DVD drives etc, so if you burn data to a DVD burn it in the same folder and the PyDAQviewer will be able to find it.
-
-Select date:
+!split
+===== Select date from calander =====
+After locating the working directory, the user can select AWESOME's data recording date by using a calendar widget as shown in Figure ref{fig:SelectDate}.
 
 FIGURE: [imgs/SelectDate_PyDAQviewer, width=500 frac=1.0] Select date of the recorded data from the calendar. label{fig:SelectDate}
 
 !split
-======= SiteInfo =======
-This file is just simple .py files in which you will enter data. For ReceiverInfo you will enter two columns of data (Figure 1), the first column of the file is the name of the site (as defined in the VLF DAQ program
-which acquires the data).
+===== RxTxInfo =====
+This file is simply a .py file (Python code below) in which you will enter two dictionaries. The first dictionary is Rx_ID indicating the AWESOME location and its ID. The second dictionary is Tx_ID indicating the VLF transmitter ID and the orientation of the antenna (eg NS or EW).
 
 !bc python
 # -*- coding: utf-8 -*-
+#RxTxInfo.py
 '''
-Author: Ahmed Ammar, ahmed.ammar@fst.utm.tn
-Purpose: Save VLF Receivers (Rx) and Transmitters (Tx) Info
-Date Created: Mon Mar 12 22:23:34 2018
-   
+Purpose: Save VLF Receivers (Rx) and Transmitters (Tx) Info   
 '''
-# TODO: Add All Rx Sites
+# Rx info
 Rx_ID = {
             "Tunisia":"TN",
             "Algeria":"AL",
             "France":"FR",
             "Japan":"JP",
-            "New York":"NY",
-            "Boston":"BO"
+            "NewYork":"NY",
+            "Boulder":"BO",
+            "Cheyenne":"CH",
+            "Walsenburg":"WS",
+            "LasVegas":"LV",
+            
+            
             }
 
-# TODO: Create dictionary for Tx Sites
+# Tx info
 Tx_ID = {
             "NAA-NS":"NAA_000", 
             "NAA-EW":"NAA_001",
@@ -108,14 +114,24 @@ Tx_ID = {
             }
 !ec
 
+
+FIGURE: [imgs/SelectRx, frac=1.0] Select AWESOME station. label{fig:SelectRx}
+
+
+FIGURE: [imgs/SelectTx, frac=1.0] Select VLF transmitter. label{fig:SelectTx}
+
+
 ======= Reproducing the LEP Tutorial =======
 Now that you have a basic understanding of how the DAQviewer works, it's time to put it to the test and try out all the features. To do this we'll be reproducing a few of the plots you made by hand in the LEP tutorial.
 
 To start edit the `SiteInfo.py` file to include the sites: Cheyenne, Boulder, Walsenburg, and Las Vegas (note in the `SiteInfo.py` file Las Vegas should be all one word: LasVegas).
 
-FIGURE: [imgs/lep_tuto, width=500 frac=1.0] Example working on data from LEP tutorial. label{fig:LEP_Tuto}
+FIGURE: [imgs/LEPtuto, width=500 frac=1.0] Example working on data from LEP tutorial. label{fig:LEP_Tuto}
 
 The output of this configuration is in below:
 
-FIGURE: [imgs/LEPfigure, width=500 frac=1.0] Generated figure. label{fig:LEP_figure}
+FIGURE: [imgs/LEPfigure1, width=500 frac=1.0] Generated figure. label{fig:LEP_figure1}
+
+
+FIGURE: [imgs/LEPfigure2, width=500 frac=1.0] Zoomed figure. label{fig:LEP_figure2}
 

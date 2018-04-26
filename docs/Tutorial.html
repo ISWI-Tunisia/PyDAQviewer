@@ -54,9 +54,10 @@ pre { color: inherit; background-color: transparent; }
                2,
                None,
                '___sec2'),
-              ('Folder Path Convension', 2, None, '___sec3'),
-              ('SiteInfo', 1, None, '___sec4'),
-              ('Reproducing the LEP Tutorial', 1, None, '___sec5')]}
+              ('Folder Path Convension: working directory', 2, None, '___sec3'),
+              ('Select date from calander', 2, None, '___sec4'),
+              ('RxTxInfo', 2, None, '___sec5'),
+              ('Reproducing the LEP Tutorial', 1, None, '___sec6')]}
 end of tocinfo -->
 
 <body>
@@ -82,9 +83,10 @@ end of tocinfo -->
      <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>The VLF PyDAQviewer</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Which Data to Plot</b></a></li>
      <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Narrowband	data	file	naming	convention</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Folder Path Convension</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;"><b>SiteInfo</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;"><b>Reproducing the LEP Tutorial</b></a></li>
+     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Folder Path Convension: working directory</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Select date from calander</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;RxTxInfo</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;"><b>Reproducing the LEP Tutorial</b></a></li>
 
         </ul>
       </li>
@@ -118,12 +120,9 @@ end of tocinfo -->
 <center>[2] <b>ISWI-Tunisia.</b></center>
 <br>
 <p>
-<center><h4>Apr 7, 2018</h4></center> <!-- date -->
+<center><h4>Apr 26, 2018</h4></center> <!-- date -->
 <br>
 <b>Summary.</b> The VLF PyDAQviewer (Data Acquisition data viewer)is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver. Tis Program is inspired from the matlab PyDAQviewer program developped by Benjamin Cotts at Stanford University and distribuded for the use of AWESOME-VLF comunity at the ISWI network.
-
-<p>
-<br /><br /><center><p><img src="imgs/GUI_PyDAQviewer.png" align="bottom" width=500></p></center><br /><br />
 
 <p>
 </div> <!-- end jumbotron -->
@@ -135,9 +134,10 @@ Table of contents</h2>
 <a href="#___sec0"> The VLF PyDAQviewer </a><br>
 <a href="#___sec1"> Which Data to Plot </a><br>
 &nbsp; &nbsp; &nbsp; <a href="#___sec2"> Narrowband	data	file	naming	convention </a><br>
-&nbsp; &nbsp; &nbsp; <a href="#___sec3"> Folder Path Convension </a><br>
-<a href="#___sec4"> SiteInfo </a><br>
-<a href="#___sec5"> Reproducing the LEP Tutorial </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec3"> Folder Path Convension: working directory </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec4"> Select date from calander </a><br>
+&nbsp; &nbsp; &nbsp; <a href="#___sec5"> RxTxInfo </a><br>
+<a href="#___sec6"> Reproducing the LEP Tutorial </a><br>
 </p>
 <p>
 <!-- !split -->
@@ -190,57 +190,67 @@ XXYYMMDDHHMMSSZZZ_ACCT.mat
 
 <!-- !split -->
 
-<h2 id="___sec3" class="anchor">Folder Path Convension </h2>
-Before running the PyDAQviewer, make sure the main folder that is used to store your Narrowband data is <code>'NarrowbandData/'</code>.
+<h2 id="___sec3" class="anchor">Folder Path Convension: working directory </h2>
+FAfter running the PyDAQviewer.py script, the working directory that is used to store your Narrowband data is set by default <code>'C:/NarrowbandData/'</code>. See the user interface in Figure <a href="#fig:GUI">1</a>.
+
+<p>
+<center> <!-- figure label: --> <div id="fig:GUI"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 1:  PyDAQviewer GUI when you run the PyDAQviewer.py script.  <!-- caption label: fig:GUI --> </p></center>
+<p><img src="imgs/GUI_PyDAQviewer.png" align="bottom" width=500></p>
+</center>
 
 <p>
 <center> <!-- figure label: --> <div id="fig:SelectFolder"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 1:  Select NarrowbandData folder.  <!-- caption label: fig:SelectFolder --> </p></center>
+<center><p class="caption">Figure 2:  Select NarrowbandData folder.  <!-- caption label: fig:SelectFolder --> </p></center>
 <p><img src="imgs/opendir.png" align="bottom" width=500></p>
 </center>
 
 <p>
 The path to your data will be something like: <code>'C:/NarrowbandData/SiteName/Year/MM/DD/'</code> (e.g. <code>'C:/NarrowbandData/Tunisia/2018/03/25/'</code>). Note that this can be on any drive root drive: C-Z including DVD drives etc, so if you burn data to a DVD burn it in the same folder and the PyDAQviewer will be able to find it.
+<!-- !split -->
 
-<p>
-Select date:
+<h2 id="___sec4" class="anchor">Select date from calander </h2>
+After locating the working directory, the user can select AWESOME's data recording date by using a calendar widget as shown in Figure <a href="#fig:SelectDate">3</a>.
 
 <p>
 <center> <!-- figure label: --> <div id="fig:SelectDate"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 2:  Select date of the recorded data from the calendar.  <!-- caption label: fig:SelectDate --> </p></center>
+<center><p class="caption">Figure 3:  Select date of the recorded data from the calendar.  <!-- caption label: fig:SelectDate --> </p></center>
 <p><img src="imgs/SelectDate_PyDAQviewer.png" align="bottom" width=500></p>
 </center>
 
 <p>
 <!-- !split -->
 
-<h1 id="___sec4" class="anchor">SiteInfo </h1>
-This file is just simple .py files in which you will enter data. For ReceiverInfo you will enter two columns of data (Figure 1), the first column of the file is the name of the site (as defined in the VLF DAQ program
-which acquires the data).
+<h2 id="___sec5" class="anchor">RxTxInfo </h2>
+This file is simply a .py file (Python code below) in which you will enter two dictionaries. The first dictionary is Rx_ID indicating the AWESOME location and its ID. The second dictionary is Tx_ID indicating the VLF transmitter ID and the orientation of the antenna (eg NS or EW).
 
 <p>
 
 <!-- code=python (!bc python) typeset with pygments style "monokai" -->
 <div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># -*- coding: utf-8 -*-</span>
+<span style="color: #75715e">#RxTxInfo.py</span>
 <span style="color: #e6db74">&#39;&#39;&#39;</span>
-<span style="color: #e6db74">Author: Ahmed Ammar, ahmed.ammar@fst.utm.tn</span>
-<span style="color: #e6db74">Purpose: Save VLF Receivers (Rx) and Transmitters (Tx) Info</span>
-<span style="color: #e6db74">Date Created: Mon Mar 12 22:23:34 2018</span>
-<span style="color: #e6db74">   </span>
+<span style="color: #e6db74">Purpose: Save VLF Receivers (Rx) and Transmitters (Tx) Info   </span>
 <span style="color: #e6db74">&#39;&#39;&#39;</span>
-<span style="color: #75715e"># TODO: Add All Rx Sites</span>
+<span style="color: #75715e"># Rx info</span>
 <span style="color: #f8f8f2">Rx_ID</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
             <span style="color: #e6db74">&quot;Tunisia&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;TN&quot;</span><span style="color: #f8f8f2">,</span>
             <span style="color: #e6db74">&quot;Algeria&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;AL&quot;</span><span style="color: #f8f8f2">,</span>
             <span style="color: #e6db74">&quot;France&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;FR&quot;</span><span style="color: #f8f8f2">,</span>
             <span style="color: #e6db74">&quot;Japan&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;JP&quot;</span><span style="color: #f8f8f2">,</span>
-            <span style="color: #e6db74">&quot;New York&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NY&quot;</span><span style="color: #f8f8f2">,</span>
-            <span style="color: #e6db74">&quot;Boston&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;BO&quot;</span>
+            <span style="color: #e6db74">&quot;NewYork&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NY&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;Boulder&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;BO&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;Cheyenne&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;CH&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;Walsenburg&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;WS&quot;</span><span style="color: #f8f8f2">,</span>
+            <span style="color: #e6db74">&quot;LasVegas&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;LV&quot;</span><span style="color: #f8f8f2">,</span>
+            
+            
             <span style="color: #f8f8f2">}</span>
 
-<span style="color: #75715e"># TODO: Create dictionary for Tx Sites</span>
+<span style="color: #75715e"># Tx info</span>
 <span style="color: #f8f8f2">Tx_ID</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span>
             <span style="color: #e6db74">&quot;NAA-NS&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NAA_000&quot;</span><span style="color: #f8f8f2">,</span> 
             <span style="color: #e6db74">&quot;NAA-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;NAA_001&quot;</span><span style="color: #f8f8f2">,</span>
@@ -270,8 +280,21 @@ which acquires the data).
             <span style="color: #e6db74">&quot;ISR-EW&quot;</span><span style="color: #f8f8f2">:</span><span style="color: #e6db74">&quot;ISR_001&quot;</span>
             <span style="color: #f8f8f2">}</span>
 </pre></div>
+<p>
+<center> <!-- figure label: --> <div id="fig:SelectRx"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 4:  Select AWESOME station.  <!-- caption label: fig:SelectRx --> </p></center>
+<p><img src="imgs/SelectRx.png" align="bottom" ></p>
+</center>
 
-<h1 id="___sec5" class="anchor">Reproducing the LEP Tutorial </h1>
+<p>
+<center> <!-- figure label: --> <div id="fig:SelectTx"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 5:  Select VLF transmitter.  <!-- caption label: fig:SelectTx --> </p></center>
+<p><img src="imgs/SelectTx.png" align="bottom" ></p>
+</center>
+
+<h1 id="___sec6" class="anchor">Reproducing the LEP Tutorial </h1>
 Now that you have a basic understanding of how the DAQviewer works, it's time to put it to the test and try out all the features. To do this we'll be reproducing a few of the plots you made by hand in the LEP tutorial.
 
 <p>
@@ -280,18 +303,25 @@ To start edit the <code>SiteInfo.py</code> file to include the sites: Cheyenne, 
 <p>
 <center> <!-- figure label: --> <div id="fig:LEP_Tuto"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 3:  Example working on data from LEP tutorial.  <!-- caption label: fig:LEP_Tuto --> </p></center>
-<p><img src="imgs/lep_tuto.png" align="bottom" width=500></p>
+<center><p class="caption">Figure 6:  Example working on data from LEP tutorial.  <!-- caption label: fig:LEP_Tuto --> </p></center>
+<p><img src="imgs/LEPtuto.png" align="bottom" width=500></p>
 </center>
 
 <p>
 The output of this configuration is in below:
 
 <p>
-<center> <!-- figure label: --> <div id="fig:LEP_figure"></div> <!-- FIGURE -->
+<center> <!-- figure label: --> <div id="fig:LEP_figure1"></div> <!-- FIGURE -->
 <hr class="figure">
-<center><p class="caption">Figure 4:  Generated figure.  <!-- caption label: fig:LEP_figure --> </p></center>
-<p><img src="imgs/LEPfigure.png" align="bottom" width=500></p>
+<center><p class="caption">Figure 7:  Generated figure.  <!-- caption label: fig:LEP_figure1 --> </p></center>
+<p><img src="imgs/LEPfigure1.png" align="bottom" width=500></p>
+</center>
+
+<p>
+<center> <!-- figure label: --> <div id="fig:LEP_figure2"></div> <!-- FIGURE -->
+<hr class="figure">
+<center><p class="caption">Figure 8:  Zoomed figure.  <!-- caption label: fig:LEP_figure2 --> </p></center>
+<p><img src="imgs/LEPfigure2.png" align="bottom" width=500></p>
 </center>
 
 <p>
