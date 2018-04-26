@@ -75,7 +75,7 @@ class PlotNarrowband(QMainWindow, Ui_MainWindow):
                 else:
                     ax1.clear()
                     
-                ax1.set_title(title, fontsize=10, weight = 'bold')
+                ax1.set_title(title, fontsize=8, weight = 'bold')
                 ax1.set_xlabel("Time (UT)", fontsize=8, weight = 'bold')
                 ax1.set_ylabel("Amplitude (dB)", fontsize=8, weight = 'bold')
                 ax1.set_xlim(self.start, self.end)
@@ -123,7 +123,7 @@ class PlotNarrowband(QMainWindow, Ui_MainWindow):
                     ax2.clear()
 #                ax2.plot(time[:len(data_phase_averaged)], data_phase_averaged, lw=1, color='r')
 #                ax2.plot(time, data_phase_unwrapped, lw=.5, color='b', alpha=.5)
-                ax2.set_title(title, fontsize=10, weight = 'bold')
+                ax2.set_title(title, fontsize=8, weight = 'bold')
                 ax2.set_xlabel("Time (UT)", fontsize=8, weight = 'bold')
                 ax2.set_ylabel("Phase (deg)", fontsize=8, weight = 'bold')
                 ax2.set_xlim(self.start,self.end)

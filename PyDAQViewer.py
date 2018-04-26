@@ -22,7 +22,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot, QLocale, QDate, QDateTime
 from PlotData import Plot_Data
 from PlotNarrowband import PlotNarrowband
-from SitesInfo import Rx_ID, Tx_ID
+from RxTxInfo import Rx_ID, Tx_ID
 import json
 
 class App(QDialog):
