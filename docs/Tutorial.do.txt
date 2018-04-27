@@ -1,5 +1,6 @@
 TITLE: PyDAQviewer Tutorial
-AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm at University of Tunis El Manar, Faculty of Sciences of Tunis, LSAMA Laboratory & ISWI-Tunisia.
+AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at University of Tunis El Manar, Faculty of Sciences of Tunis, LSAMA Laboratory & ISWI-Tunisia.
+AUTHOR: Hassen Ghalila Email:hassen.ghalila@gmail.com at University of Tunis El Manar, Faculty of Sciences of Tunis, LSAMA Laboratory & ISWI-Tunisia.
 DATE: today
 __Summary.__
 The VLF PyDAQviewer (Data Acquisition data viewer)is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver. Tis Program is inspired from the matlab PyDAQviewer program developped by Benjamin Cotts at Stanford University and distribuded for the use of AWESOME-VLF comunity at the ISWI network.
