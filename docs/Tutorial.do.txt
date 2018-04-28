@@ -61,7 +61,7 @@ FIGURE: [imgs/SelectDate_PyDAQviewer, width=500 frac=1.0] Select date of the rec
 
 !split
 ===== Receiver-Transmitter Information =====
-This file is simply a .py file (Python code below) in which you will enter two dictionaries. The first dictionary is Rx_ID indicating the AWESOME location and its ID. The second dictionary is Tx_ID indicating the VLF transmitter ID and the orientation of the antenna (eg NS or EW).
+This file is simply a Python file (Source code below) in which you will enter two dictionaries. The first one is Rx_ID indicating the AWESOME receiver location and its ID. The second dictionary is Tx_ID indicating the VLF transmitter ID and the orientation of the antenna (eg NS or EW).
 
 !bc python
 # -*- coding: utf-8 -*-
