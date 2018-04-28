@@ -3,7 +3,7 @@ AUTHOR: Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at University
 AUTHOR: Hassen Ghalila Email:hassen.ghalila@gmail.com at University of Tunis El Manar, Faculty of Sciences of Tunis, LSAMA Laboratory & ISWI-Tunisia.
 DATE: today
 __Summary.__
-The VLF PyDAQviewer (Data Acquisition data viewer)is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver. Tis Program is inspired from the matlab PyDAQviewer program developped by Benjamin Cotts at Stanford University and distribuded for the use of AWESOME-VLF comunity at the ISWI network.
+The VLF PyDAQviewer (Data Acquisition data viewer)is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver. Tis Program is inspired from the matlab PyDAQviewer program developped by Benjamin Cotts at Stanford University and distribuded for the use of AWESOME-VLF community at the ISWI network.
 
 TOC: on
 
@@ -60,7 +60,7 @@ After locating the working directory, the user can select AWESOME's data recordi
 FIGURE: [imgs/SelectDate_PyDAQviewer, width=500 frac=1.0] Select date of the recorded data from the calendar. label{fig:SelectDate}
 
 !split
-===== RxTxInfo =====
+===== Receiver-Transmitter Information =====
 This file is simply a .py file (Python code below) in which you will enter two dictionaries. The first dictionary is Rx_ID indicating the AWESOME location and its ID. The second dictionary is Tx_ID indicating the VLF transmitter ID and the orientation of the antenna (eg NS or EW).
 
 !bc python
