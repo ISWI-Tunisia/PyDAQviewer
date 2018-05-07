@@ -8,7 +8,7 @@ The VLF PyDAQviewer (Data Acquisition data viewer) is a Python program designed 
 ## Installation
 Download or clone this repository on your computer and run the main program `PyDAQviewer.py`.
 
-## Python package dependencies and Standard Python Libraries 
+## Python version and packages that must be installed in advance
 
     python 3.6,
     PyQt5,
