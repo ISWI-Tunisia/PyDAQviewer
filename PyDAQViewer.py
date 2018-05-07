@@ -84,13 +84,14 @@ class App(QDialog):
 
     def about(self):
         QMessageBox.about(self, "PyDAQviewer",
-                          '''
-                          The VLF PyDAQviewer (Data Acquisition data viewer)
-                          is a Python program designed to make it easier to view
-                          and analyze data acquired with your AWESOME receiver.\n
-                          Author: Ahmed Ammar \n
-                          Date Created: Tue Mar 13 15:27:51 2018 \n
-                          ''')
+          ''' <center> <font size="4" style="bold" color="blue"> The VLF PyDAQviewer</font> 
+              <br>(Data Acquisition data viewer) <br>
+              is a Python program designed to make it easier to view and analyze data
+              acquired with your AWESOME receiver.</center> <br>
+              <center> <font size="4" style="bold" color="blue"> Authors </font><br>
+              Ahmed Ammar (ahmed.ammar@fst.utm.tn) <br>
+              Hassen Ghalila </center> <br><br>
+              Date Created: Tue Mar 13 15:27:51 2018 \n </center> ''')
     def aboutQt(self):
         QMessageBox.aboutQt(self)
     def createHorizontalLayout(self):
