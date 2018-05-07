@@ -1,0 +1,150 @@
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #000080; font-weight: bold">TITLE: PyDAQviewer Tutorial</span>
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Ahmed Ammar {copyright|CC BY} Email:ahmed.ammar@fst.utm.tn at University of Tunis El Manar, Faculty of Sciences of Tunis, LSAMA Laboratory &amp; ISWI-Tunisia.
+<span style="color: #000080; font-weight: bold">AUTHOR:</span> Hassen Ghalila Email:hassen.ghalila@gmail.com at University of Tunis El Manar, Faculty of Sciences of Tunis, LSAMA Laboratory &amp; ISWI-Tunisia.
+
+<span style="color: #000080; font-weight: bold">DATE:</span> today
+<span style="color: #800080; font-weight: bold">__Abstract :__</span>
+The VLF PyDAQviewer (Python Data Acquisition data viewer) is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver. This program is inspired from the matlab DAQviewer developped by Benjamin Cotts at Stanford University and distribuded for the use of AWESOME-VLF community at the ISWI network.
+
+<span style="color: #000080; font-weight: bold">TOC:</span> on
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= The VLF PyDAQviewer =======</span>
+The program is broken up into three main sections:
+
+o Selecting data
+o Loading and ploting data
+o Viewing and interacting with data
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">======= Which Data to Plot =======</span>
+Narrowband data consist in the amplitude and phase of specific transmitter frequencies received at a given location. The size of the dataset is reasonable, in the order of 100 MB per day &amp; per site, and can be easily transmitted from remote field sites over the internet. In other words, these data can be archived continuously.
+
+The data are saved in a Matlab V4 format, allowing an ease read with Matlab. The format consists of a header with basic information, followed by the data itself. The specific format is detailed below, so that it is machine-readable in any digital application.
+
+<span style="color: #000080; font-weight: bold">===== Narrowband data file naming convention =====</span>
+Narrowband filename convention is similar to that used in the &quot;International Space Weather Initiative (ISWI) Data Policy (version 1.3.1)&quot;: &quot;http://newserver.stil.bas.bg/ISWI/PDFsJ/ISWI_DataPolicy_1.3.1_final.pdf&quot; for AWESOME receiver.
+
+XXYYMMDDHHMMSSZZZ_ACCT.mat
+
+* XX - Station ID
+* YY - Year
+* MM - Month
+* DD - Day
+* HH - Hour
+* MM - Minute
+* SS - Second
+* ZZZ - Transmitter call sign
+* A - Not relevant (0)
+* CC - 00 for N/S channel, 01 for E/W channel
+* T - Type of data
+  * A is low resolution (1 Hz sampling rate) amplitude
+  * B is low resolution (1 Hz sampling rate) phase
+  * C is high resolution (50 Hz sampling rate) amplitude
+  * D is high resolution (50 Hz sampling rate) phase
+  * F is high resolution (50 Hz sampling rate) effective group delay
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+Example : TN180503000000DHO_001A.mat 
+
+* TN stands for Tunisia
+* 180503000000 = 18/05/03 at 00:00:00
+* DHO is for a German transmitter
+* 01 is for E/W orientation
+* A is for low resolution (1 Hz sampling rate) amplitude
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Folder Path Convention: working directory =====</span>
+After running the PyDAQviewer.py script, the working directory that is used to store your Narrowband data is set by default to : `’C:/NarrowbandData/&#39;`. See the user interface in Figure ref{fig:GUI}.
+
+<span style="color: #658b00">FIGURE: [imgs/GUI_PyDAQviewer, width=500 frac=1.0] PyDAQviewer GUI after running the PyDAQviewer.py script. label{fig:GUI}</span>
+
+
+
+<span style="color: #658b00">FIGURE: [imgs/opendir, width=500 frac=1.0] Select NarrowbandData folder. label{fig:SelectFolder}</span>
+
+The path to your data will be something like: `&#39;C:/NarrowbandData/SiteName/Year/MM/DD/&#39;` (e.g. `&#39;C:/NarrowbandData/Tunisia/2018/03/25/&#39;`). Note that this can be on any drive root drive: C-Z including DVD drives etc. So if you burn data to a DVD burn it in the same folder and the PyDAQviewer will be able to find them.
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Select date from calander =====</span>
+After locating the working directory, the user can select AWESOME&#39;s data recording date by using a calendar widget as shown in Figure ref{fig:SelectDate}.
+
+<span style="color: #658b00">FIGURE: [imgs/SelectDate_PyDAQviewer, width=500 frac=1.0] Select date of the recorded data from the calendar. label{fig:SelectDate}</span>
+
+<span style="color: #8B008B; font-weight: bold">!split</span>
+<span style="color: #000080; font-weight: bold">===== Receiver-Transmitter Information =====</span>
+This file is simply a Python file (Source code below: `SiteInfo.py`) in which you will enter two dictionaries. The first one is Rx_ID indicating the AWESOME receiver locations and their IDs. The second dictionary is Tx_ID indicating the VLF transmitter IDs and the orientation of their antennas (e.g. 000 for N/S or 001 for E/W). In this way, it is very easy to add any other receiver and transmitter IDs. Then you can simply select the Rx_ID and Tx_ID of interest via menus as shown in Figures ref{fig:SelectRx} and ref{fig:SelectTx}.
+
+<span style="color: #8B008B; font-weight: bold">!bc</span> python
+<span style="color: #228B22"># -*- coding: utf-8 -*-</span>
+<span style="color: #228B22">#SiteInfo.py</span>
+&#39;&#39;&#39;
+Purpose: Save VLF Receivers (Rx) and Transmitters (Tx) Info   
+&#39;&#39;&#39;
+<span style="color: #228B22"># Rx info</span>
+Rx_ID = {
+            &quot;Tunisia&quot;:&quot;TN&quot;,
+            &quot;Algeria&quot;:&quot;AL&quot;,
+            &quot;France&quot;:&quot;FR&quot;,
+            &quot;Japan&quot;:&quot;JP&quot;,
+            &quot;NewYork&quot;:&quot;NY&quot;,
+            &quot;Boulder&quot;:&quot;BO&quot;,
+            &quot;Cheyenne&quot;:&quot;CH&quot;,
+            &quot;Walsenburg&quot;:&quot;WS&quot;,
+            &quot;LasVegas&quot;:&quot;LV&quot;,
+            
+            
+            }
+
+<span style="color: #228B22"># Tx info</span>
+Tx_ID = {
+            &quot;NAA-NS&quot;:&quot;NAA_000&quot;, 
+            &quot;NAA-EW&quot;:&quot;NAA_001&quot;,
+            &quot;NRK-NS&quot;:&quot;NRK_000&quot;,
+            &quot;NRK-EW&quot;:&quot;NRK_001&quot;,
+            &quot;NLK-NS&quot;:&quot;NLK_000&quot;,
+            &quot;NLK-EW&quot;:&quot;NLK_001&quot;,
+            &quot;NAU-NS&quot;:&quot;NAU_000&quot;,
+            &quot;NAU-EW&quot;:&quot;NAU_001&quot;,
+            &quot;NPM-NS&quot;:&quot;NPM_000&quot;,
+            &quot;NPM-EW&quot;:&quot;NPM_001&quot;,
+            &quot;ICV-NS&quot;:&quot;ICV_000&quot;,
+            &quot;ICV-EW&quot;:&quot;ICV_001&quot;,
+            &quot;NSC-NS&quot;:&quot;NSC_000&quot;,
+            &quot;NSC-EW&quot;:&quot;NSC_001&quot;,
+            &quot;GQD-NS&quot;:&quot;GQD_000&quot;,
+            &quot;GQD-EW&quot;:&quot;GQD_001&quot;,
+            &quot;GBZ-NS&quot;:&quot;GBZ_000&quot;,
+            &quot;GBZ-EW&quot;:&quot;GBZ_001&quot;,
+            &quot;DHO-NS&quot;:&quot;DHO_000&quot;,
+            &quot;DHO-EW&quot;:&quot;DHO_001&quot;,
+            &quot;HWU-NS&quot;:&quot;HWU_000&quot;,
+            &quot;HWU-EW&quot;:&quot;HWU_001&quot;,
+            &quot;JXN-NS&quot;:&quot;JXN_000&quot;,
+            &quot;JXN-EW&quot;:&quot;JXN_001&quot;,
+            &quot;ISR-NS&quot;:&quot;ISR_000&quot;,
+            &quot;ISR-EW&quot;:&quot;ISR_001&quot;
+            }
+<span style="color: #8B008B; font-weight: bold">!ec</span>
+
+
+<span style="color: #658b00">FIGURE: [imgs/SelectRx, frac=1.0] Select AWESOME station. label{fig:SelectRx}</span>
+
+
+<span style="color: #658b00">FIGURE: [imgs/SelectTx, frac=1.0] Select VLF transmitter. label{fig:SelectTx}</span>
+
+
+<span style="color: #000080; font-weight: bold">======= Reproducing the Lightning-Induced Electron Precipitation (LEP) Tutorial =======</span>
+Now that you have a basic understanding of how the DAQviewer works, it&#39;s time to put it to the test and try out all the features. To do this we&#39;ll be reproducing a few of the plots you made by hand in the LEP tutorial.
+
+To start edit the `SiteInfo.py` file to include the Rx_IDs: Cheyenne, Boulder, Walsenburg, and Las Vegas (note in the `SiteInfo.py` file Las Vegas should be all one word: LasVegas).
+
+<span style="color: #658b00">FIGURE: [imgs/LEPtuto, width=500 frac=1.0] Example working on data from LEP tutorial. label{fig:LEP_Tuto}</span>
+
+The output of this configuration is in below:
+
+<span style="color: #658b00">FIGURE: [imgs/LEPfigure1, width=500 frac=1.0] Generated figure. label{fig:LEP_figure1}</span>
+
+
+<span style="color: #658b00">FIGURE: [imgs/LEPfigure2, width=500 frac=1.0] Zoomed figure. label{fig:LEP_figure2}</span>
+</pre></div>

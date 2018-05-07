@@ -1,0 +1,94 @@
+translating doconce text in Tutorial.do.txt to html
+figure file imgs/opendir:
+    can use imgs/opendir.png for format html
+figure file imgs/SelectTx:
+    can use imgs/SelectTx.png for format html
+figure file imgs/SelectDate_PyDAQviewer:
+    can use imgs/SelectDate_PyDAQviewer.png for format html
+figure file imgs/GUI_PyDAQviewer:
+    can use imgs/GUI_PyDAQviewer.png for format html
+figure file imgs/LEPtuto:
+    can use imgs/LEPtuto.png for format html
+figure file imgs/SelectRx:
+    can use imgs/SelectRx.png for format html
+figure file imgs/LEPfigure2:
+    can use imgs/LEPfigure2.png for format html
+figure file imgs/LEPfigure1:
+    can use imgs/LEPfigure1.png for format html
+output in Tutorial.html
+translating doconce text in Tutorial.do.txt to pdflatex
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+Rx_ID
+Tx_ID
+Rx_ID
+Tx_ID
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+ you will enter two dictionaries. The first one is Rx_ID indicating the AWESOME receiver locations and their I
+figure file imgs/opendir:
+    can use imgs/opendir.png for format pdflatex
+figure file imgs/SelectDate_PyDAQviewer:
+    can use imgs/SelectDate_PyDAQviewer.png for format pdflatex
+figure file imgs/SelectRx:
+    can use imgs/SelectRx.png for format pdflatex
+figure file imgs/GUI_PyDAQviewer:
+    can use imgs/GUI_PyDAQviewer.png for format pdflatex
+figure file imgs/LEPtuto:
+    can use imgs/LEPtuto.png for format pdflatex
+figure file imgs/SelectTx:
+    can use imgs/SelectTx.png for format pdflatex
+figure file imgs/LEPfigure1:
+    can use imgs/LEPfigure1.png for format pdflatex
+figure file imgs/LEPfigure2:
+    can use imgs/LEPfigure2.png for format pdflatex
+output in Tutorial.tex
+translating doconce text in Tutorial.do.txt to html
+figure file imgs/SelectTx:
+    can use imgs/SelectTx.png for format html
+figure file imgs/GUI_PyDAQviewer:
+    can use imgs/GUI_PyDAQviewer.png for format html
+figure file imgs/opendir:
+    can use imgs/opendir.png for format html
+figure file imgs/LEPfigure1:
+    can use imgs/LEPfigure1.png for format html
+figure file imgs/LEPfigure2:
+    can use imgs/LEPfigure2.png for format html
+figure file imgs/LEPtuto:
+    can use imgs/LEPtuto.png for format html
+figure file imgs/SelectDate_PyDAQviewer:
+    can use imgs/SelectDate_PyDAQviewer.png for format html
+figure file imgs/SelectRx:
+    can use imgs/SelectRx.png for format html
+output in Tutorial.html
+translating doconce text in Tutorial.do.txt to pdflatex
+*** warning: latex format will have problem with words
+    containing underscores (this warning is very uncertain, might be wrong too):
+
+Rx_ID
+Tx_ID
+Rx_ID
+Tx_ID
+
+    typeset these words with `inline verbatim` or escape with backslash
+    First word appears here:
+ you will enter two dictionaries. The first one is Rx_ID indicating the AWESOME receiver locations and their I
+figure file imgs/opendir:
+    can use imgs/opendir.png for format pdflatex
+figure file imgs/LEPtuto:
+    can use imgs/LEPtuto.png for format pdflatex
+figure file imgs/LEPfigure2:
+    can use imgs/LEPfigure2.png for format pdflatex
+figure file imgs/SelectDate_PyDAQviewer:
+    can use imgs/SelectDate_PyDAQviewer.png for format pdflatex
+figure file imgs/SelectRx:
+    can use imgs/SelectRx.png for format pdflatex
+figure file imgs/LEPfigure1:
+    can use imgs/LEPfigure1.png for format pdflatex
+figure file imgs/SelectTx:
+    can use imgs/SelectTx.png for format pdflatex
+figure file imgs/GUI_PyDAQviewer:
+    can use imgs/GUI_PyDAQviewer.png for format pdflatex
+output in Tutorial.tex
