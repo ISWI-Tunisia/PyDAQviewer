@@ -19,6 +19,7 @@ Download or clone this repository on your computer and run the main program `PyD
    
 ## Tutorial
 * [html version](https://iswi-tunisia.github.io/PyDAQviewer/docs/Tutorial.html)
+* [PDF version](https://iswi-tunisia.github.io/PyDAQviewer/docs/Tutorial.pdf)
 
 ## Changelog
 
