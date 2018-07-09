@@ -14,7 +14,8 @@ Download or clone this repository on your computer and run the main program `PyD
     PyQt5,
     numpy,
     scipy,
-    matplotlib,
+    json,
+    matplotlib
     
    
 ## Tutorial
