@@ -1,5 +1,5 @@
 # PyDAQviewer
-[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc/4.0/) 
+[![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](http://creativecommons.org/licenses/by-nc/4.0/) ![DOI 10.13140/RG.2.2.30378.31687](https://img.shields.io/badge/DOI-10.13140/RG.2.2.30378.31687-blue.svg)
 
 The VLF PyDAQviewer (Data Acquisition data viewer) is a Python program designed to make it easier to view and analyze data acquired with your AWESOME receiver.
 
